@@ -1,8 +1,7 @@
-package com.vise.bluetoothchat.activity;
+package online.mifind.sochartble.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
@@ -23,19 +22,9 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.vise.basebluetooth.BluetoothChatHelper;
-import com.vise.basebluetooth.callback.IChatCallback;
-import com.vise.basebluetooth.common.State;
-import com.vise.basebluetooth.mode.BaseMessage;
 import com.vise.basebluetooth.utils.BluetoothUtil;
-import com.vise.bluetoothchat.R;
-import com.vise.bluetoothchat.adapter.GroupFriendAdapter;
-import com.vise.bluetoothchat.common.AppConstant;
-import com.vise.bluetoothchat.mode.FriendInfo;
-import com.vise.bluetoothchat.mode.GroupInfo;
 import com.vise.common_base.manager.AppManager;
 import com.vise.common_base.utils.ToastUtil;
-import com.vise.common_utils.log.LogUtils;
 import com.vise.common_utils.utils.character.DateTime;
 import com.vise.common_utils.utils.view.ActivityUtil;
 
@@ -43,6 +32,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+import online.mifind.sochartble.R;
+import online.mifind.sochartble.adapter.GroupFriendAdapter;
+import online.mifind.sochartble.common.AppConstant;
+import online.mifind.sochartble.mode.FriendInfo;
+import online.mifind.sochartble.mode.GroupInfo;
 
 public class MainActivity extends BaseChatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,10 +82,14 @@ public class MainActivity extends BaseChatActivity
         mGroupFriendAdapter = new GroupFriendAdapter(mContext, mGroupFriendListData);
         mGroupFriendLv.setAdapter(mGroupFriendAdapter);
         mGroupFriendLv.expandGroup(0);
+        //监测GPS是否打开
+        if (!BluetoothUtil.isGpsOpen(mContext)) {
+            BluetoothUtil.openGps((Activity) mContext, 1);
+        }
 
-        if(BluetoothUtil.isSupportBle(mContext)){
+        if (BluetoothUtil.isSupportBle(mContext)) {
             BluetoothUtil.enableBluetooth((Activity) mContext, 1);
-        } else{
+        } else {
             ToastUtil.showToast(mContext, getString(R.string.phone_not_support_bluetooth));
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -117,10 +116,10 @@ public class MainActivity extends BaseChatActivity
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 1){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 findDevice();
-            } else{
+            } else {
                 AppManager.getAppManager().appExit(mContext);
             }
         }
@@ -129,9 +128,14 @@ public class MainActivity extends BaseChatActivity
 
     @Override
     protected void onRestart() {
-        if(BluetoothUtil.isSupportBle(mContext)){
+        //监测GPS是否打开
+        if (!BluetoothUtil.isGpsOpen(mContext)) {
+            BluetoothUtil.openGps((Activity) mContext, 1);
+        }
+
+        if (BluetoothUtil.isSupportBle(mContext)) {
             BluetoothUtil.enableBluetooth((Activity) mContext, 1);
-        } else{
+        } else {
             ToastUtil.showToast(mContext, getString(R.string.phone_not_support_bluetooth));
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -171,7 +175,7 @@ public class MainActivity extends BaseChatActivity
         if (id == R.id.menu_about) {
             displayAboutDialog();
             return true;
-        } else if(id == R.id.menu_share){
+        } else if (id == R.id.menu_share) {
             ToastUtil.showToast(mContext, getString(R.string.menu_share));
             return true;
         }
@@ -226,7 +230,7 @@ public class MainActivity extends BaseChatActivity
                 .show();
     }
 
-    private void findDevice(){
+    private void findDevice() {
         // 获得已经保存的配对设备
         Set<BluetoothDevice> pairedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
         if (pairedDevices.size() > 0) {

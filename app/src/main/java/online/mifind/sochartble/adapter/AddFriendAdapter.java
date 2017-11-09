@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.adapter;
+package online.mifind.sochartble.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -6,16 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vise.bluetoothchat.R;
+import online.mifind.sochartble.R;
 import com.vise.common_base.adapter.helper.HelperAdapter;
 import com.vise.common_base.adapter.helper.HelperViewHolder;
 import com.vise.common_utils.utils.character.StringUtil;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 16/9/22 22:00.
- */
 public class AddFriendAdapter extends HelperAdapter<BluetoothDevice> {
     public AddFriendAdapter(Context context) {
         super(context, R.layout.item_friend_info);

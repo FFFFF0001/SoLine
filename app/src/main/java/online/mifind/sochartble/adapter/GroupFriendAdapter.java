@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.adapter;
+package online.mifind.sochartble.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,17 +8,12 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vise.bluetoothchat.R;
-import com.vise.bluetoothchat.mode.FriendInfo;
-import com.vise.bluetoothchat.mode.GroupInfo;
+import online.mifind.sochartble.R;
+import online.mifind.sochartble.mode.FriendInfo;
+import online.mifind.sochartble.mode.GroupInfo;
 
 import java.util.List;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 2016-09-21 16:50
- */
 public class GroupFriendAdapter extends BaseExpandableListAdapter {
 
     private Context context;

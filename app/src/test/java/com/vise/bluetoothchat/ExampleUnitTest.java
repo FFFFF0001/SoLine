@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat;
+package online.mifind.sochartble;
 
 import org.junit.Test;
 

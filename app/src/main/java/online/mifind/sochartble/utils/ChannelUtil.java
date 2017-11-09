@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.utils;
+package online.mifind.sochartble.utils;
 
 import java.io.IOException;
 import java.util.Enumeration;

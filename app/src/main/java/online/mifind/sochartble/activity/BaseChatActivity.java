@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.activity;
+package online.mifind.sochartble.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +10,6 @@ import android.support.v7.widget.Toolbar;
 import com.vise.common_base.activity.BaseActivity;
 import com.vise.common_base.manager.AppManager;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 16/9/24 16:27.
- */
 public abstract class BaseChatActivity extends BaseActivity implements AppCompatCallback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

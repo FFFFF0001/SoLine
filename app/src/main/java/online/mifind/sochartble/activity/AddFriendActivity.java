@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.activity;
+package online.mifind.sochartble.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,8 +20,6 @@ import com.vise.basebluetooth.callback.IScanCallback;
 import com.vise.basebluetooth.receiver.PairBroadcastReceiver;
 import com.vise.basebluetooth.receiver.ScanBroadcastReceiver;
 import com.vise.basebluetooth.utils.BluetoothUtil;
-import com.vise.bluetoothchat.R;
-import com.vise.bluetoothchat.adapter.AddFriendAdapter;
 import com.vise.common_base.utils.ToastUtil;
 import com.vise.common_utils.log.LogUtils;
 
@@ -32,11 +30,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 2016-09-20 15:18
- */
+import online.mifind.sochartble.R;
+import online.mifind.sochartble.adapter.AddFriendAdapter;
+
 public class AddFriendActivity extends BaseChatActivity {
 
     private ProgressBar mScanPb;

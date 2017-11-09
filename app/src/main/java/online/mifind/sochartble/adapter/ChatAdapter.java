@@ -1,20 +1,15 @@
-package com.vise.bluetoothchat.adapter;
+package online.mifind.sochartble.adapter;
 
 import android.content.Context;
 import android.widget.TextView;
 
 import com.vise.basebluetooth.common.ChatConstant;
 import com.vise.basebluetooth.mode.FileMessage;
-import com.vise.bluetoothchat.R;
-import com.vise.bluetoothchat.mode.ChatInfo;
+import online.mifind.sochartble.R;
+import online.mifind.sochartble.mode.ChatInfo;
 import com.vise.common_base.adapter.helper.HelperAdapter;
 import com.vise.common_base.adapter.helper.HelperViewHolder;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 16/9/24 21:03.
- */
 public class ChatAdapter extends HelperAdapter<ChatInfo> {
     public ChatAdapter(Context context) {
         super(context, R.layout.item_chat_info_left, R.layout.item_chat_info_right);

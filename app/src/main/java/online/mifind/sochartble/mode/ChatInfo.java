@@ -1,14 +1,9 @@
-package com.vise.bluetoothchat.mode;
+package online.mifind.sochartble.mode;
 
 import com.vise.basebluetooth.mode.BaseMessage;
 
 import java.io.Serializable;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 16/9/24 20:58.
- */
 public class ChatInfo implements Serializable {
 
     private int chatId;

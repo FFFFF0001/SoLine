@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat.activity;
+package online.mifind.sochartble.activity;
 
 import android.app.ProgressDialog;
 import android.content.ComponentName;
@@ -28,11 +28,11 @@ import com.vise.basebluetooth.common.State;
 import com.vise.basebluetooth.mode.BaseMessage;
 import com.vise.basebluetooth.mode.FileMessage;
 import com.vise.basebluetooth.utils.HexUtil;
-import com.vise.bluetoothchat.R;
-import com.vise.bluetoothchat.adapter.ChatAdapter;
-import com.vise.bluetoothchat.common.AppConstant;
-import com.vise.bluetoothchat.mode.ChatInfo;
-import com.vise.bluetoothchat.mode.FriendInfo;
+import online.mifind.sochartble.R;
+import online.mifind.sochartble.adapter.ChatAdapter;
+import online.mifind.sochartble.common.AppConstant;
+import online.mifind.sochartble.mode.ChatInfo;
+import online.mifind.sochartble.mode.FriendInfo;
 import com.vise.common_base.utils.ToastUtil;
 import com.vise.common_utils.log.LogUtils;
 import com.vise.common_utils.utils.character.DateTime;
@@ -46,11 +46,6 @@ import java.util.List;
 import cn.qqtheme.framework.picker.FilePicker;
 import cn.qqtheme.framework.util.StorageUtils;
 
-/**
- * @Description:
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 16/9/24 16:26.
- */
 public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.OnEmojiconBackspaceClickedListener,
         EmojiconGridFragment.OnEmojiconClickedListener {
 

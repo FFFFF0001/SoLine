@@ -1,15 +1,11 @@
-package com.vise.bluetoothchat.mode;
+package online.mifind.sochartble.mode;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 /**
  * @Description: 好友信息
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 2016-09-20 16:16
  */
 public class FriendInfo implements Parcelable {
 

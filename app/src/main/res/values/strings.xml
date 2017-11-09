@@ -5,8 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Menu items -->
-    <string name="menu_author">逍遥游</string>
-    <string name="menu_website">http://www.xiaoyaoyou1212.com</string>
+    <string name="menu_author">SoChart</string>
+    <string name="menu_website">BLE chart App</string>
     <string name="menu_about">关于</string>
     <string name="menu_share">分享</string>
 
@@ -28,10 +28,6 @@
     <string name="phone_not_support_bluetooth">该手机不支持蓝牙功能，3秒后应用将自动退出！</string>
 
     <string name="about_dialog_text">\n
-        项目简介：基于Android Classic Bluetooth的蓝牙聊天软件，支持一对一实时通信、好友添加、好友列表显示、好友上下线提醒等功能，其中消息发送支持文本、表情等方式。\n
-        项目地址：https://github.com/xiaoyaoyou1212/BluetoothChat\n
-        作者：胡伟\n
-        网站：http://www.xiaoyaoyou1212.com\n
-        博客：http://blog.csdn.net/xiaoyaoyou1212
+       关于
     </string>
 </resources>

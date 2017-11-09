@@ -1,4 +1,4 @@
-package com.vise.bluetoothchat;
+package online.mifind.sochartble;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
