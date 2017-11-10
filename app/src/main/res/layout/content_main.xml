@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ebm="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,8 +14,28 @@
         android:id="@+id/friend_group_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:scrollbars="none"
         android:clipToPadding="true"
-        />
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <online.mifind.soline.views.ExpandableMenuOverlay
+        android:id="@+id/button_menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_btn_4"
+        ebm:bottomPad="0.02"
+        ebm:closeButtonSrc="@mipmap/icon_btn_4"
+        ebm:dimAmount="0.8"
+        ebm:distanceX="0.28"
+        ebm:distanceY="0.17"
+        ebm:leftButtonSrc="@mipmap/icon_btn_1"
+        ebm:leftButtonText="@string/action_left"
+        ebm:mainButtonSize="0.25"
+        ebm:midButtonSrc="@mipmap/icon_btn_2"
+        ebm:midButtonText="@string/action_mid"
+        ebm:otherButtonSize="0.22"
+        ebm:rightButtonSrc="@mipmap/icon_btn_3"
+        ebm:rightButtonText="@string/action_right" />
 </RelativeLayout>

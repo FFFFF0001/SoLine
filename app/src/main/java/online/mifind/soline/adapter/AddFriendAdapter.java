@@ -1,4 +1,4 @@
-package online.mifind.sochartble.adapter;
+package online.mifind.soline.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import online.mifind.sochartble.R;
+import online.mifind.soline.R;
 import com.vise.common_base.adapter.helper.HelperAdapter;
 import com.vise.common_base.adapter.helper.HelperViewHolder;
 import com.vise.common_utils.utils.character.StringUtil;

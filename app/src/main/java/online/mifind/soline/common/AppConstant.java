@@ -1,4 +1,4 @@
-package online.mifind.sochartble.common;
+package online.mifind.soline.common;
 
 public class AppConstant {
     public static final String FRIEND_INFO = "friendInfo";

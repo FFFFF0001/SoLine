@@ -1,14 +1,9 @@
 <resources>
-    <string name="app_name">蓝牙聊天</string>
+    <string name="app_name">速联</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <!-- Menu items -->
-    <string name="menu_author">SoChart</string>
-    <string name="menu_website">BLE chart App</string>
-    <string name="menu_about">关于</string>
-    <string name="menu_share">分享</string>
 
     <string name="device_online">在线</string>
     <string name="device_offline">离线</string>
@@ -27,7 +22,10 @@
 
     <string name="phone_not_support_bluetooth">该手机不支持蓝牙功能，3秒后应用将自动退出！</string>
 
-    <string name="about_dialog_text">\n
-       关于
-    </string>
+    <!-- Views -->
+    <string name="empty"/>
+    <string name="action_left">聊 天</string>
+    <string name="action_mid">传 照 片</string>
+    <string name="action_right">搜 索 好 友</string>
+
 </resources>

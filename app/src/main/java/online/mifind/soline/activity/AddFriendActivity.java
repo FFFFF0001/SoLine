@@ -1,4 +1,4 @@
-package online.mifind.sochartble.activity;
+package online.mifind.soline.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -30,8 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import online.mifind.sochartble.R;
-import online.mifind.sochartble.adapter.AddFriendAdapter;
+import online.mifind.soline.R;
+import online.mifind.soline.adapter.AddFriendAdapter;
 
 public class AddFriendActivity extends BaseChatActivity {
 

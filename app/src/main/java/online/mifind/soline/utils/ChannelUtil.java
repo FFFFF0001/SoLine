@@ -1,4 +1,4 @@
-package online.mifind.sochartble.utils;
+package online.mifind.soline.utils;
 
 import java.io.IOException;
 import java.util.Enumeration;

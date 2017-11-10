@@ -1,4 +1,4 @@
-package online.mifind.sochartble.mode;
+package online.mifind.soline.mode;
 
 import com.vise.basebluetooth.mode.BaseMessage;
 

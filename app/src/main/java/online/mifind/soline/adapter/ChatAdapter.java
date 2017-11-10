@@ -1,12 +1,12 @@
-package online.mifind.sochartble.adapter;
+package online.mifind.soline.adapter;
 
 import android.content.Context;
 import android.widget.TextView;
 
 import com.vise.basebluetooth.common.ChatConstant;
 import com.vise.basebluetooth.mode.FileMessage;
-import online.mifind.sochartble.R;
-import online.mifind.sochartble.mode.ChatInfo;
+import online.mifind.soline.R;
+import online.mifind.soline.mode.ChatInfo;
 import com.vise.common_base.adapter.helper.HelperAdapter;
 import com.vise.common_base.adapter.helper.HelperViewHolder;
 

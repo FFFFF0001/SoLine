@@ -1,4 +1,4 @@
-package online.mifind.sochartble;
+package online.mifind.soline;
 
 import org.junit.Test;
 

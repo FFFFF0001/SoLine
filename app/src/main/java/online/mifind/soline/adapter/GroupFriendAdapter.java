@@ -1,4 +1,4 @@
-package online.mifind.sochartble.adapter;
+package online.mifind.soline.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import online.mifind.sochartble.R;
-import online.mifind.sochartble.mode.FriendInfo;
-import online.mifind.sochartble.mode.GroupInfo;
+import online.mifind.soline.R;
+import online.mifind.soline.mode.FriendInfo;
+import online.mifind.soline.mode.GroupInfo;
 
 import java.util.List;
 
