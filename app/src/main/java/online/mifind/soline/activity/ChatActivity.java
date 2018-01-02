@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rockerhieu.emojicon.EmojiconGridFragment;
@@ -64,17 +65,19 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
     private boolean mIsSendFile = false;
     private File mSendFile;
     private String mFilePath;
+    private RelativeLayout mNavLeft;
 
+    private Handler handler = new Handler(Looper.getMainLooper());
     private IChatCallback<byte[]> chatCallback = new IChatCallback<byte[]>() {
         @Override
         public void connectStateChange(State state) {
-            LogUtils.i("connectStateChange:"+state.getCode());
-            if(state == State.STATE_CONNECTED){
+            LogUtils.i("connectStateChange:" + state.getCode());
+            if (state == State.STATE_CONNECTED) {
                 if (mProgressDialog != null) {
                     mProgressDialog.hide();
                 }
-                if(mFriendInfo != null){
-                    mTitleTv.setText(mFriendInfo.getFriendNickName()+"("+getString(R.string.device_online)+")");
+                if (mFriendInfo != null) {
+                    mTitleTv.setText(mFriendInfo.getFriendNickName() + "(" + getString(R.string.device_online) + ")");
                 }
                 ToastUtil.showToast(mContext, getString(R.string.connect_friend_success));
             }
@@ -82,20 +85,20 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
 
         @Override
         public void writeData(byte[] data, int type) {
-            if(data == null){
+            if (data == null) {
                 LogUtils.e("writeData is Null or Empty!");
                 return;
             }
-            LogUtils.i("writeData:"+HexUtil.encodeHexStr(data));
+            LogUtils.i("writeData:" + HexUtil.encodeHexStr(data));
         }
 
         @Override
         public void readData(byte[] data, int type) {
-            if(data == null){
+            if (data == null) {
                 LogUtils.e("readData is Null or Empty!");
                 return;
             }
-            LogUtils.i("readData:"+HexUtil.encodeHexStr(data));
+            LogUtils.i("readData:" + HexUtil.encodeHexStr(data));
             try {
                 BaseMessage message = CommandHelper.unpackData(data);
                 ChatInfo chatInfo = new ChatInfo();
@@ -112,7 +115,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
 
         @Override
         public void setDeviceName(String name) {
-            LogUtils.i("setDeviceName:"+name);
+            LogUtils.i("setDeviceName:" + name);
         }
 
         @Override
@@ -120,13 +123,14 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
             if (!isFinishing()) {
                 return;
             }
-            LogUtils.i("showMessage:"+message);
+            LogUtils.i("showMessage:" + message);
             if (mProgressDialog != null) {
                 mProgressDialog.hide();
             }
             ToastUtil.showToast(mContext, getString(R.string.connect_friend_fail));
         }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +142,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
     protected void initWidget() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mNavLeft = (RelativeLayout) findViewById(R.id.nav_left);
         mTitleTv = (TextView) findViewById(R.id.title);
         mChatMsgLv = (ListView) findViewById(R.id.chat_msg_show_list);
         mMsgFaceIb = (ImageButton) findViewById(R.id.chat_msg_face);
@@ -154,25 +159,28 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
         if (mFriendInfo == null) {
             return;
         }
-        if(mFriendInfo.isOnline()){
-            mTitleTv.setText(mFriendInfo.getFriendNickName()+"("+getString(R.string.device_online)+")");
-        } else{
-            mTitleTv.setText(mFriendInfo.getFriendNickName()+"("+getString(R.string.device_offline)+")");
+        if (mFriendInfo.isOnline()) {
+            mTitleTv.setText(mFriendInfo.getFriendNickName() + "(" + getString(R.string.device_online) + ")");
+        } else {
+            mTitleTv.setText(mFriendInfo.getFriendNickName() + "(" + getString(R.string.device_offline) + ")");
         }
         mChatAdapter = new ChatAdapter(mContext);
         mChatMsgLv.setAdapter(mChatAdapter);
 
         mBluetoothChatHelper = new BluetoothChatHelper(chatCallback);
         mProgressDialog.setMessage(getString(R.string.connect_friend_loading));
-        if(!isFinishing() && !mProgressDialog.isShowing()){
+        if (!isFinishing() && !mProgressDialog.isShowing()) {
             mProgressDialog.show();
         }
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mBluetoothChatHelper.connect(mFriendInfo.getBluetoothDevice(), false);
+                if (mBluetoothChatHelper != null)
+                    mBluetoothChatHelper.connect(mFriendInfo.getBluetoothDevice(), true);
             }
         }, 3000);
+
     }
 
     @Override
@@ -180,7 +188,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
         mMsgFaceIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mEmojiconFl.getVisibility() == View.GONE){
+                if (mEmojiconFl.getVisibility() == View.GONE) {
                     hideSoftInput();
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                         @Override
@@ -189,7 +197,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
                             setEmojiconFragment(false);
                         }
                     }, 100);
-                } else{
+                } else {
                     mEmojiconFl.setVisibility(View.GONE);
                 }
             }
@@ -215,9 +223,9 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
         mMsgSendIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mMsgEditEt.getText() != null && mMsgEditEt.getText().toString().trim().length() > 0){
+                if (mMsgEditEt.getText() != null && mMsgEditEt.getText().toString().trim().length() > 0) {
                     sendMessage();
-                } else{
+                } else {
                     ToastUtil.showToast(mContext, getString(R.string.send_msg_isEmpty));
                 }
             }
@@ -226,6 +234,13 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
             @Override
             public void onClick(View v) {
                 mEmojiconFl.setVisibility(View.GONE);
+            }
+        });
+
+        mNavLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -255,19 +270,19 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
         chatInfo.setSend(true);
         chatInfo.setSendTime(DateTime.getStringByFormat(new Date(), DateTime.DEFYMDHMS));
         BaseMessage message = null;
-        if(mIsSendFile){
+        if (mIsSendFile) {
             message = new FileMessage();
             message.setMsgType(ChatConstant.VISE_COMMAND_TYPE_FILE);
             message.setMsgContent(mMsgEditEt.getText().toString());
             message.setMsgLength(mMsgEditEt.getText().length());
-            if(mSendFile != null){
-                ((FileMessage)message).setFileLength((int) mSendFile.length());
-                ((FileMessage)message).setFileName(mSendFile.getName());
+            if (mSendFile != null) {
+                ((FileMessage) message).setFileLength((int) mSendFile.length());
+                ((FileMessage) message).setFileName(mSendFile.getName());
             }
-            if(mFilePath != null){
-                ((FileMessage)message).setFileNameLength(mFilePath.length());
+            if (mFilePath != null) {
+                ((FileMessage) message).setFileNameLength(mFilePath.length());
             }
-        } else{
+        } else {
             message = new BaseMessage();
             message.setMsgType(ChatConstant.VISE_COMMAND_TYPE_TEXT);
             message.setMsgContent(mMsgEditEt.getText().toString());
@@ -278,7 +293,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
         mChatAdapter.setListAll(mChatInfoList);
         mMsgEditEt.setText("");
         try {
-            if(mIsSendFile && mSendFile != null){
+            if (mIsSendFile && mSendFile != null) {
                 mBluetoothChatHelper.write(CommandHelper.packFile(mSendFile));
                 mIsSendFile = false;
                 //调用系统程序发送文件
@@ -288,7 +303,7 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
                 sharingIntent.setComponent(new ComponentName("com.android.bluetooth", "com.android.bluetooth.opp.BluetoothOppLauncherActivity"));
                 sharingIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(uri));
                 startActivityForResult(sharingIntent, 1);
-            } else{
+            } else {
                 mBluetoothChatHelper.write(CommandHelper.packMsg(message.getMsgContent()));
             }
         } catch (UnsupportedEncodingException e) {
@@ -298,18 +313,21 @@ public class ChatActivity extends BaseChatActivity implements EmojiconsFragment.
 
     @Override
     protected void onDestroy() {
-        if(mProgressDialog != null){
+        if (mProgressDialog != null) {
             mProgressDialog.dismiss();
             mProgressDialog = null;
         }
-        if(mBluetoothChatHelper != null){
+        if (mBluetoothChatHelper != null) {
             mBluetoothChatHelper.stop();
             mBluetoothChatHelper = null;
+        }
+        if (handler != null) {
+            handler = null;
         }
         super.onDestroy();
     }
 
-    private void hideSoftInput(){
+    private void hideSoftInput() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
     }

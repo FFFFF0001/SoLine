@@ -28,8 +28,8 @@ public abstract class BaseChatActivity extends BaseActivity implements AppCompat
             WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
             localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
         }
-        StatusUtil.setMeizuStatusBarDarkIcon(this,true);
-        StatusUtil.setMiuiStatusBarDarkMode(this,true);
+        StatusUtil.setMeizuStatusBarDarkIcon(this, true);
+        StatusUtil.setMiuiStatusBarDarkMode(this, true);
     }
 
     public void setSupportActionBar(@Nullable Toolbar toolbar) {
@@ -59,6 +59,8 @@ public abstract class BaseChatActivity extends BaseActivity implements AppCompat
     }
 
     protected abstract void initWidget();
+
     protected abstract void initData();
+
     protected abstract void initEvent();
 }

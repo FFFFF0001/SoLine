@@ -10,17 +10,11 @@ import android.os.Message;
 import com.vise.basebluetooth.callback.IChatCallback;
 import com.vise.basebluetooth.common.ChatConstant;
 import com.vise.basebluetooth.common.State;
-import com.vise.basebluetooth.mode.BaseMessage;
 import com.vise.basebluetooth.thread.AcceptThread;
 import com.vise.basebluetooth.thread.ConnectThread;
 import com.vise.basebluetooth.thread.ConnectedThread;
 import com.vise.basebluetooth.utils.BleLog;
 
-/**
- * @Description: 蓝牙消息处理帮助类
- * @author: <a href="http://www.xiaoyaoyou1212.com">DAWI</a>
- * @date: 2016-09-18 17:35
- */
 public class BluetoothChatHelper {
 
     private final BluetoothAdapter mAdapter;

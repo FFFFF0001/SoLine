@@ -10,21 +10,24 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:background="@color/colorPrimary">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/dimens5"
-                android:src="@mipmap/ic_nav_left" />
+            <RelativeLayout
+                android:id="@+id/nav_left"
+                android:layout_width="@dimen/dimens35"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true">
+
+                <ImageView
+                    android:layout_width="@dimen/dimens17"
+                    android:layout_height="@dimen/dimens17"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_nav_left" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/title"
